@@ -12,8 +12,25 @@
 #"z"	    1	    "a"
 #"a B z"	4	    "e F d"
 
-
-
 def solution(s, n):
-    answer = ''
-    return answer
+    answer = []
+    for char in s :
+        alpha = chr(ord(char) + n)
+        if char == ' ' :
+            answer += ' '
+        answer += alpha
+    return ''.join(answer)
+
+def solution1(s, n):
+    answer = []
+    for char in s :
+        if char == ' ' :
+            answer.append(' ')
+            continue
+        if char.islower():
+            answer.append(chr((ord(char) - ord('a') + n) % 26 + ord('a')))
+        elif char.isupper():
+            answer.append(chr((ord(char) - ord('A') + n) % 26 + ord('A')))
+        else:
+            answer.append(char)
+    return ''.join(answer)
