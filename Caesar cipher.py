@@ -19,7 +19,7 @@ def solution(s, n):
         if char == ' ' :
             answer += ' '
         answer += alpha
-    return ''.join(answer)
+    return ''.join(answer) #틀림
 
 def solution1(s, n):
     answer = []
