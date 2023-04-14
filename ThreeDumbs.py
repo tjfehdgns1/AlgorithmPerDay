@@ -14,5 +14,36 @@
 #[-1, 1, -1, 1]	            0
 
 def solution(number):
+    count = 0
+    for i in range(len(number)) :
+        for j in range(len(number)) :
+            for k in range(len(number)) :
+                if number[i] + number[j] + number[k] == 0 :
+                    count += 1
+    return count #틀림
+
+def solution(number):
+    number.sort()
+    count = 0
+    for i in range(len(number)-2):
+        print(number[i])
+        j = i + 1
+        k = len(number) - 1 
+        while j <= k :
+            s = number[i] + number[j] + number[k]
+            if s == 0 :
+                count += 1
+                j += 1
+            else :
+                k -= 1
+    return count # 틀림
+
+from itertools import combinations
+
+def solution(number):
     answer = 0
+    for comb in combinations(number, 3):
+        if sum(comb) == 0:
+            answer += 1
     return answer
+
