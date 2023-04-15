@@ -13,3 +13,10 @@
 #["sun", "bed", "car"]	    1	["car", "bed", "sun"]
 #["abce", "abcd", "cdx"]	2	["abcd", "abce", "cdx"]
 
+def solution(strings, n):
+    tuples = [(s[n], s) for s in strings]
+    tuples.sort()
+    return [t[1] for t in tuples] #튜플 sort()
+
+def strange_sort(strings, n):
+    return sorted(strings, key=lambda x: x[n]) #key를 이용한 sorted()
