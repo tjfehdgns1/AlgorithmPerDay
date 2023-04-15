@@ -49,4 +49,4 @@ def solution(n, arr1, arr2):
         a12=a12.replace('1','#')
         a12=a12.replace('0',' ')
         answer.append(a12)
-    return answer # 눈에 띄는 풀이
+    return answer # 눈에 띄는 풀이, 오른정렬
