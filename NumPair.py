@@ -49,3 +49,4 @@ def solution(X, Y):
         return '0'
     else :
         return answer # 간결한 코드 85.91ms
+    #sort를 쓰지 않기 위해 큰수부터 range
