@@ -113,3 +113,4 @@ arr = [1,2,3,4,5]
 result = linear(arr)
 print(f"합은 {result}입니다") # 합은 15입니다
 ```
+
