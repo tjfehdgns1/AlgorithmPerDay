@@ -1,7 +1,7 @@
 # AlgorithmPerDay
 Since 2023. 03. 19 Started algorithm porblem solving everyday. Until I master Programmers (https://programmers.co.kr/)
 
-###Rule:
+### Rule:
 - Solve  w/out searching 30mins
 - Use GPT as a teacher
 
