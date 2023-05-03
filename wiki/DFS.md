@@ -3,6 +3,10 @@
 
 ![DFS](https://github.com/tjfehdgns1/AlgorithmPerDay/blob/main/image/DFS.gif?raw=true)
 
+***
+
+스택 자료구조 혹은 재귀함수를 이용한다
+
 ```python
 def dfs(graph, v, visited) :
     visited[v] = True
