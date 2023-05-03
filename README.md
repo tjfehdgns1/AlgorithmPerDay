@@ -1,10 +1,12 @@
 # AlgorithmPerDay
 Since 2023. 03. 19 Started algorithm porblem solving everyday. Until I master Programmers (https://programmers.co.kr/)
 
+* <a href = "https://github.com/tjfehdgns1/AlgorithmPerDay/wiki" > 📚 **위키(wiki)** </a>
+
 ### Rule:
 - Solve  w/out searching 30mins
 - Use GPT as a teacher
-
+- ...
 Give any comments if you want. 
 Help me what I need to learn more.
 Thanks.
