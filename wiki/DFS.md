@@ -30,4 +30,6 @@ graph = [
 visited = [False] * 9
 result = dfs(graph, 1, visited) # 1 2 7 6 8 3 4 5
 ```
+![graph](https://github.com/tjfehdgns1/AlgorithmPerDay/blob/ce0940c6cb4b26b35ff27a5b1e783f71902eff1d/image/graph.png)
 
+***
