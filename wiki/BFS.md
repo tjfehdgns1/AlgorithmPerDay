@@ -3,6 +3,7 @@
 
 ![BFS](https://github.com/tjfehdgns1/AlgorithmPerDay/blob/70fd23e0e913b810f8a24c4b5e66e9f384eb57e7/image/BFS.gif)
 
+***
 
 큐 자료구조를 이용한다
 
