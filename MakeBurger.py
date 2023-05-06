@@ -82,4 +82,4 @@ def solution(ingredient):
         stack[-4:] = []
         count += 1
 
-    return count # 최대 150.77ms
+    return count # 최대 150.77ms 
