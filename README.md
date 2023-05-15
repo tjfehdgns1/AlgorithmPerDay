@@ -4,6 +4,7 @@ Since 2023. 03. 19 Started algorithm porblem solving everyday. Until I master Pr
 * <a href = "https://github.com/tjfehdgns1/AlgorithmPerDay/wiki" > 📚 **위키(wiki)** </a>
 
 ### Rule:
+- Code w/ Python
 - Solve  w/out searching 30mins
 - Use GPT as a teacher
 - ...
