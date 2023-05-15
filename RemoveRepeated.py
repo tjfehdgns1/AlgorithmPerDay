@@ -31,3 +31,4 @@ def solution(my_string):
 #만약 중복된 문자중에서 앞에 있는 문자를 지울려면?
 def remove_transposition(my_string: str) -> str:
     pass
+
