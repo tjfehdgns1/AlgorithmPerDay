@@ -8,7 +8,14 @@
 ***
 ### List
 
-* 정렬
+* ###### 추가
+```python
+my_list = [1,3,5,7,9]
+my_list.append(11)  # my_list[len(my_list):] = [11]
+print(my_list)  # [1,3,5,7,9,11]
+```
+* ######
+* ###### 정렬
 ```python
 # 리스트의 요소를 절댓값을 기준으로 역으로 정렬하는 예제
 numbers = [1,-3,5,2,4]
@@ -42,7 +49,7 @@ print(sorted_numbers)  # [-2, 3, 5, -8, 10]
 ### Dictionary
 
 ##### Built-in functions & methods
-###### .fromkeys()
+* ###### .fromkeys()
 ```python
 keys = ['a', 'b', 'c']
 initial_value = 0
