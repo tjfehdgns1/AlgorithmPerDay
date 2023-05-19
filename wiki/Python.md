@@ -8,6 +8,23 @@
 ***
 ### List
 
+* 정렬
+```python
+# 리스트의 요소를 절댓값을 기준으로 역으로 정렬하는 예제
+numbers = [1,-3,5,2,4]
+numbers.sort(key = abs, reverse = True)
+print(numbers)  # [5, 4, -3, 2, 1]
+
+# 리스트의 요소를 길이를 기준으로 정렬하는 예제
+words = ["banana", "apple", "cherry", "mango"]
+sorted_words = sorted(words, key=len)
+print(sorted_words)  # ['apple', 'mango', 'cherry', 'banana']
+
+# 리스트의 요소를 절댓값을 기준으로 정렬하는 예제
+numbers = [5, -2, 10, -8, 3]
+sorted_numbers = sorted(numbers, key=abs)
+print(sorted_numbers)  # [-2, 3, 5, -8, 10]
+```
 
 ***
 ### Tuple
