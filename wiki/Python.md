@@ -124,3 +124,224 @@ math.erfc(x)  # 여오차 함수
 math.gamma(x)  # 감마 함수
 math.lgamma(x)  # 감마 함수의 절댓값의 자연로그를 반환
 ```
+
+
+
+##### Re
+
+*정규표현식*
+
+###### 메타 문자(Meta Characters) : 
+> . ^ $ * + ? { } [ ] \ | ( )
+
+
+
+1. 문자 클래스 : [a-z], [A-Z], [0-9], [a-zA-Z0-9] 등
+* `\d` : 숫자와 매치, [0-9]
+* `\D` : [^0-9]
+* `\s` : whitespace 문자와 매치, [ \t\n\r\f\v]와 동일한 표현식이다. 맨 앞의 빈 칸은 공백문자(space)를 의미한다.
+* `\S` : [^ \t\n\r\f\v]
+* `\w` : 문자+숫자(alphanumeric)와 매치, [a-zA-Z0-9_]
+* `\W` : [^a-zA-Z0-9_]
+
+2. Dot(.) : 줄바꿈(\n)을 제외한 모든 문자와 매치됨
+`a.b` == `"a + 모든문자 + b"`
+
+
+3. 반복(*) : 0부터 무한대로 반복
+
+정규식|문자열|Match|설명
+--|--|--|--
+`ca*t`|ct|Yes|'a'가 0번 반복
+`ca*t`|cat|Yes|'a'가 1번 반복
+`ca*t`|caaat|Yes|'a'가 3번 반복</n>
+
+4. 반복(+) : 최소 1번 이상 반복될 때 사용한다
+
+정규식|문자열|Match|설명
+--|--|--|--
+`ca+t`|ct|No|'a'가 0번 반복, 매치 안됨
+`ca+t`|cat|Yes|'a'가 1번 반복
+`ca+t`|caaat|Yes|'a'가 3번 반복
+
+5. 반복({m,n}, ?) : m부터 n까지, `? == {0, 1}`
+
+정규식|문자열|Match|설명
+--|--|--|--
+`ca{2}t`|cat|No|'a'가 1번 반복, 매치 안됨
+`ca{2}t`|caat|Yes|'a'가 2번 반복
+`ca{2,5}t`|cat|No|'a'가 1번 반복, 매치 안됨
+`ca{2,5}t`|caaat|Yes|'a'가 3번 반복
+`ca?t`|cat|Yes|'a'가 1번 반복
+`ca?t`|ct|Yes|'a'가 0번 반복
+
+###### match
+
+```python
+import re
+
+p = re.compile('[a-z]+')
+m = p.match('python')
+print(m)  # <re.Match object; span=(0, 6), match='python'>
+m = p.match('3 python')
+print(m)  # none
+```
+
+###### search
+
+```python
+import re 
+
+p = re.compile('[a-z]+')
+s = p.search('3 python')
+print(s)  # <re.Match object; span=(2, 8), match='python'>, 일치되는 부분을 찾아준다
+```
+
+###### findall
+
+```python
+import re
+
+p = re.compile('[a-z]+')
+f = p.findall("life is too short")
+print(f)  # ['life', 'is', 'too', 'short']
+```
+
+###### finditer
+
+```python
+import re
+
+p = re.compile('[a-z]+')
+f = p.finditer("life is too short")
+for r in f: print(r)  # <re.Match object; span=(0, 4), match='life'>
+                      # <re.Match object; span=(5, 7), match='is'>
+                      #<re.Match object; span=(8, 11), match='too'>
+                      #<re.Match object; span=(12, 17), match='short'>
+```
+
+###### match 객체의 메소드:
+
+method|목적
+--|--
+group()|매치된 문자열을 리턴
+start()|매치된 문자열의 시작 위치를 리턴
+end()|매치된 문자열의 끝 위치를 리턴
+span()|매치된 문자열의 (시작, 끝)에 해당하는 튜플을 리턴
+
+```python
+import re
+
+p = re.compile('[a-z]+')
+m = p.match('python')
+print(m.group())  # 'python'
+print(m.start())  # 0
+print(m.end())  # 6
+print(m.span())  # (0, 6)
+```
+
+###### 컴파일 옵션:
+
+옵션|설명
+--|--
+DOTALL, S|만약 \n 문자도 포함하여 매치하고 싶다면 re.DOTALL 또는 re.S 옵션을 사용해 정규식을 컴파일
+IGNORECASE, I|대소문자 구별 없이 매치를 수행할 때 사용하는 옵션
+MULTILINE, M|`^`(시작),`$`(끝) 메타 문자를 문자열의 각 줄마다 적용
+VERBOSE, X|줄 단위로 #기호를 사용하여 주석문을 작성
+
+```python
+import re
+
+p = re.compile('a.b', re.DOTALL)
+m = p.match('a\nb')
+print(m)  # <re.Match object; span=(0, 3), match='a\nb'>
+
+
+p = re.compile('[a-z]+', re.I)
+p.match('python')  # <re.Match object; span=(0, 6), match='python'>
+p.match('Python')  # <re.Match object; span=(0, 6), match='Python'>
+
+
+p = re.compile("^python\s\w+", re.MULTILINE)
+data = """python one
+life is too short
+python two
+you need python
+python three"""
+print(p.findall(data))  # ['python one', 'python two', 'python three']
+
+charref = re.compile(r'&[#](0[0-7]+|[0-9]+|x[0-9a-fA-F]+);')
+charref = re.compile(r"""
+ &[#]                # Start of a numeric entity reference
+ (
+     0[0-7]+         # Octal form
+   | [0-9]+          # Decimal form
+   | x[0-9a-fA-F]+   # Hexadecimal form
+ )
+ ;                   # Trailing semicolon
+""", re.VERBOSE)
+```
+
+###### 그루핑:
+
+```python
+import re
+
+p = re.compile('(ABC)+')
+m = p.search('ABCABCABC OK?')
+print(m)  # <re.Match object; span=(0, 9), match='ABCABCABC'>
+print(m.group())  # ABCABCABC
+
+p = re.compile(r"(\w+)\s+\d+[-]\d+[-]\d+")
+m = p.search("park 010-1234-1234")
+print(m.group(1))  # park
+
+p = re.compile(r'(\b\w+)\s+\1')  # 재참조하기
+m = p.search('Paris in the the spring').group()
+print(m)  # 'the the'
+
+p = re.compile(r"(?P<name>\w+)\s+((\d+)[-]\d+[-]\d+)")  # 이름 붙이기
+m = p.search("park 010-1234-1234")
+print(m.group("name"))  # park
+```
+
+###### 전방 탐색:
+
+```python
+import re 
+
+p = re.compile(".+:")
+m = p.search("http://google.com")
+print(m.group())  # http:
+
+p = re.compile(".+(?=:)")  # 긍정형
+m = p.search("http://google.com")
+print(m.group())  # http
+
+p = re.compile(".*[.](?!bat$).*$", re.M)  # 부정형
+l = p.findall("""
+autoexec.exe
+autoexec.bat
+autoexec.jpg
+""")
+print(l)  # ['autoexec.exe', 'autoexec.jpg']
+```
+
+###### 문자열 바꾸기:
+
+```python
+import re 
+
+p = re.compile('(blue|white|red)')
+print(p.sub('colour', 'blue socks and red shoes'))  # colour socks and colour shoes
+```
+
+###### Greedy & Non-Greedy:
+
+```python
+import re
+
+s = '<html><head><title>Title</title>'
+print(re.match('<.*>', s).group())  # <html><head><title>Title</title>
+print(re.match('<.*?>', s).group())  # <html>
+```
