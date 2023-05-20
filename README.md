@@ -1,7 +1,7 @@
 # AlgorithmPerDay
 Since 2023. 03. 19 Started algorithm porblem solving everyday. Until I master Programmers (https://programmers.co.kr/)
 
-* <a href = "https://github.com/tjfehdgns1/AlgorithmPerDay/wiki" > 📚 **위키(wiki)** </a>
+### <a href = "https://github.com/tjfehdgns1/AlgorithmPerDay/wiki" > 📚 **위키(wiki)** </a>
 
 ### Rule:
 - Code w/ Python
