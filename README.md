@@ -11,6 +11,7 @@ Since 2023. 03. 19 Started algorithm porblem solving everyday. From (https://pro
 
 ![코딩테스트 입문 캘린더](https://user-images.githubusercontent.com/74089191/232176917-ab14f0d8-3aa3-41fd-8cd7-0e4ee444c20c.png)
 
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=o10224)](https://solved.ac/o10224/)
 
 
 ### Commit:
