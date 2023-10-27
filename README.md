@@ -1,7 +1,7 @@
 # AlgorithmPerDay
 Since 2023. 03. 19 Started algorithm porblem solving everyday. 
 From (https://programmers.co.kr/) and (https://www.acmicpc.net/)
-image/online_judge.png
+[image/online_judge.png](https://github.com/tjfehdgns1/AlgorithmPerDay/blob/main/image/online_judge.png)
 
 ### <a href = "https://github.com/tjfehdgns1/AlgorithmPerDay/wiki" > 📚 **위키(wiki)** </a>
 
