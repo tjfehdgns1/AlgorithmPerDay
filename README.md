@@ -1,5 +1,6 @@
 # AlgorithmPerDay
-Since 2023. 03. 19 Started algorithm porblem solving everyday. From (https://programmers.co.kr/) and (https://www.acmicpc.net/)
+Since 2023. 03. 19 Started algorithm porblem solving everyday. 
+From (https://programmers.co.kr/) and (https://www.acmicpc.net/)
 
 ### <a href = "https://github.com/tjfehdgns1/AlgorithmPerDay/wiki" > 📚 **위키(wiki)** </a>
 
