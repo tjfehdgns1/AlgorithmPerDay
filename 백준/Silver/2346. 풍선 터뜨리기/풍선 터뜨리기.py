@@ -1,18 +1,19 @@
-import sys
+from sys import stdin
 from collections import deque
-input = sys.stdin.readline
+input = stdin.readline
 
 n = int(input())
-q = deque(enumerate(map(int, input().split())))
-ans = []
 
-while q:
-    idx, paper = q.popleft()
-    ans.append(idx + 1)
+a = deque(enumerate(map(int, input().split())))
+b = []
 
-    if paper > 0:
-        q.rotate(-(paper - 1))
-    elif paper < 0:
-        q.rotate(-paper)
+while a:
+    i, p = a.popleft()
+    b.append(i + 1)
 
-print(' '.join(map(str, ans)))
+    if p > 0:
+        a.rotate(-p + 1)
+    elif p < 0:
+        a.rotate(-p)
+
+print(' '.join(map(str, b)))
