@@ -8,5 +8,5 @@ sum = 0
 for i, c in enumerate(a):
     sum += (ord(c) - 96) * (31 ** i)
 
-print(sum)
+print(sum%1234567891)
 
