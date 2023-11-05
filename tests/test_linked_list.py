@@ -1,13 +1,12 @@
-from datastructure.linked_list import LinkedList
-import pytest
+from structure import list
 
 
 def get_data(msg):
-    print(msg, end = ">>> ")
+    print(msg, end = ">>> ")    
     data = input()
     return int(data) if data.isdigit() else data
 
-my_list = linked_list()
+my_list = list.Linked_list()
 
 while True:
     menu = """
@@ -56,3 +55,7 @@ while True:
         print("리스트를 뒤집었습니다.")
     elif command == 9:
         break
+
+
+    if __name__ == "__main__":
+        print('main')
