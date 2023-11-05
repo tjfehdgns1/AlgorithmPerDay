@@ -1,11 +1,12 @@
-def solution(my_string):
-    dic = dict.fromkeys(my_string)
-    print(dic)
-    answer = ''
-    answer = answer.join(dic)
-    print(answer)
-    return ''.join(dict.fromkeys(my_string))
+from sys import stdin
+input = stdin.readline
 
-my_string = "We are the world"
-result = solution(my_string)
-print(result)
+n = int(input())
+a = input().rstrip()
+sum = 0
+
+for i, c in enumerate(a):
+    sum += (ord(c) - 96) * (31 ** i)
+
+print(sum%1234567891)
+
