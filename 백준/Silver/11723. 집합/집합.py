@@ -4,25 +4,48 @@ from sys import stdin
 def solution(command: str, num=None):
     global s
 
-    match command:
-        case "add":
-            if 1 <= num <= 20 and num not in s:
-                s.add(num)
-        case "remove":
-            if 1 <= num <= 20 and num in s:
-                s.remove(num)
-        case "check":
-            print(1 if num in s else 0)
-        case "toggle":
-            if 1 <= num <= 20:
-                if num in s:
-                    s.remove(num)
-                else:
-                    s.add(num)
-        case "all":
-            s = set(range(1, 21))
-        case "empty":
-            s = set()
+    if command == "add":
+        add(num)
+    elif command == "remove":
+        remove(num)
+    elif command == "check":
+        check(num)
+    elif command == "toggle":
+        toggle(num)
+    elif command == "all":
+        all_numbers()
+    elif command == "empty":
+        empty()
+
+
+def add(num):
+    if 1 <= num <= 20 and num not in s:
+        s.add(num)
+
+
+def remove(num):
+    if 1 <= num <= 20 and num in s:
+        s.remove(num)
+
+
+def check(num):
+    print(1 if num in s else 0)
+
+
+def toggle(num):
+    if 1 <= num <= 20:
+        if num in s:
+            s.remove(num)
+        else:
+            s.add(num)
+
+
+def all_numbers():
+    s.update(range(1, 21))
+
+
+def empty():
+    s.clear()
 
 
 input = stdin.readline
