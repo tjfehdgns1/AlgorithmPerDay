@@ -1,3 +1,9 @@
+import sys 
+sys.setrecursionlimit(10000)
+
+
+input = sys.stdin.readline
+
 def dfs(x, y, field, visited):
     if x < 0 or x >= M or y < 0 or y >= N or field[y][x] == 0 or visited[y][x]:
         return 0
