@@ -9,6 +9,7 @@
 # reverse()     #
 #################
 
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -20,22 +21,19 @@ class Linked_list:
         self.head = None
         self.length = 0
 
-
     def __len__(self):
         return self.length
-
 
     def __str__(self):
         if not self.head:
             return '"Empty"'
         node = self.head
-        string = '['
+        string = "["
         while node.next:
-            string += str(node.data) + ', '
+            string += str(node.data) + ", "
             node = node.next
-        return string + str(node.data) + ']'
+        return string + str(node.data) + "]"
 
-    
     def __contains__(self, data):
         node = self.head
         while node:
@@ -43,7 +41,7 @@ class Linked_list:
                 return True
             node = node.next
         return False
-        
+
     def appendleft(self, data):
         node = Node(data)
         if self.head is None:
@@ -52,7 +50,6 @@ class Linked_list:
             node.next = self.head
             self.head = node
         self.length += 1
-
 
     def append(self, data):
         node = Node(data)
@@ -65,7 +62,6 @@ class Linked_list:
             prev.next = node
         self.length += 1
 
-
     def popleft(self):
         if not self.head:
             return None
@@ -74,7 +70,6 @@ class Linked_list:
         self.length -= 1
         return node.data
 
-    
     def pop(self):
         if not self.head:
             return None
@@ -86,7 +81,6 @@ class Linked_list:
         self.length -= 1
         return node.data
 
-
     def insert(self, data, i):
         if i <= 0:
             self.appendleft(data)
@@ -94,13 +88,12 @@ class Linked_list:
             self.append(data)
         else:
             prev = self.head
-            for _ in range(i-1):
+            for _ in range(i - 1):
                 prev = prev.next
             node = Node(data)
             node.next, prev.next = prev.next, node
             self.length += 1
 
-    
     def remove(self, data):
         if self.head.data == data:
             self.popleft()
@@ -113,7 +106,6 @@ class Linked_list:
                 return True
             prev = prev.next
         return False
-
 
     def reverse(self):
         prev = None

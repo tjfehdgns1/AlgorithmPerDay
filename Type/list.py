@@ -31,8 +31,8 @@ def list_operations():
     enumerate(l)
     list(map(str, l))
     filter(lambda x: x % 2 == 0, l)
-    all([True, True, True]) # True and if empty -> true
-    any([False, False, True]) # True and if empty -> false
+    all([True, True, True])  # True and if empty -> true
+    any([False, False, True])  # True and if empty -> false
     set(l)
-    
+
     l.clear()
