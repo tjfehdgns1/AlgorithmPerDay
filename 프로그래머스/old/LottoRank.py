@@ -1,4 +1,4 @@
-'''로또의 최고 순위와 최저 순위
+"""로또의 최고 순위와 최저 순위
 문제 설명
 로또 6/45(이하 '로또'로 표기)는 1부터 45까지의 숫자 중 6개를 찍어서 맞히는 대표적인 복권입니다. 아래는 로또의 순위를 정하는 방식입니다. 1
 
@@ -36,15 +36,16 @@ win_nums의 원소들은 정렬되어 있지 않을 수도 있습니다.
 lottos	                win_nums	                 result
 [44, 1, 0, 0, 31, 25]	[31, 10, 45, 1, 6, 19]	    [3, 5]
 [0, 0, 0, 0, 0, 0]	    [38, 19, 20, 40, 15, 25]	[1, 6]
-[45, 4, 35, 20, 3, 9]	[20, 9, 3, 45, 4, 35]	    [1, 1]'''   
+[45, 4, 35, 20, 3, 9]	[20, 9, 3, 45, 4, 35]	    [1, 1]"""
+
 
 def solution(lottos, win_nums):
     count = 0
-    for win_num in win_nums :
-        if win_num in lottos :
+    for win_num in win_nums:
+        if win_num in lottos:
             count += 1
     z = lottos.count(0)
-    
+
     best_rank = 7 - (count + z)
     if best_rank > 6:
         best_rank = 6
@@ -52,17 +53,16 @@ def solution(lottos, win_nums):
     worst_rank = 7 - count
     if worst_rank > 6:
         worst_rank = 6
-        
-    return [best_rank, worst_rank] #solved 10min
+
+    return [best_rank, worst_rank]  # solved 10min
 
 
 def solution(lottos, win_nums):
-
-    rank=[6,6,5,4,3,2,1]
+    rank = [6, 6, 5, 4, 3, 2, 1]
 
     cnt_0 = lottos.count(0)
     ans = 0
     for x in win_nums:
         if x in lottos:
             ans += 1
-    return rank[cnt_0 + ans],rank[ans]
+    return rank[cnt_0 + ans], rank[ans]

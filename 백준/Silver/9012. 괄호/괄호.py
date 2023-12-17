@@ -1,4 +1,5 @@
 from sys import stdin
+
 input = stdin.readline
 
 n = int(input())
@@ -8,18 +9,16 @@ a = [input().strip() for _ in range(n)]
 for b in a:
     d = 0
     for i, c in enumerate(b):
-        if c == '(':
+        if c == "(":
             d += 1
-        elif c == ')':
+        elif c == ")":
             d -= 1
-    
+
         if d < 0:
-            print('NO')
+            print("NO")
             break
     else:
         if d == 0:
-            print('YES')
+            print("YES")
         else:
-            print('NO')
-            
-
+            print("NO")

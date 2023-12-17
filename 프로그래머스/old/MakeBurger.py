@@ -1,4 +1,4 @@
-'''햄버거 만들기
+"""햄버거 만들기
 문제 설명
 햄버거 가게에서 일을 하는 상수는 햄버거를 포장하는 일을 합니다. 함께 일을 하는 다른 직원들이 햄버거에 들어갈 재료를 조리해 주면 조리된 순서대로 상수의 앞에 아래서부터 위로 쌓이게 되고,
 상수는 순서에 맞게 쌓여서 완성된 햄버거를 따로 옮겨 포장을 하게 됩니다. 
@@ -17,37 +17,43 @@ ingredient의 원소는 1, 2, 3 중 하나의 값이며, 순서대로 빵, 야�
 입출력 예
 ingredient	                result
 [2, 1, 1, 2, 3, 1, 2, 3, 1]	2
-[1, 3, 2, 1, 2, 1, 3, 1, 2]	0'''
+[1, 3, 2, 1, 2, 1, 3, 1, 2]	0"""
 
-def re(ingredient) :
+
+def re(ingredient):
     count = 0
-    s = ''
-    for n in ingredient :
+    s = ""
+    for n in ingredient:
         s += str(n)
     print(s)
-    
-    if '1231' in s :
+
+    if "1231" in s:
         count += 1
-        s.replace('1231','')
-    else : 
+        s.replace("1231", "")
+    else:
         return count
     return re(ingredient)
 
-def solution2(ingredient) :
+
+def solution2(ingredient):
     result = re(ingredient)
-    return result # 잘못된 접근
+    return result  # 잘못된 접근
+
+
 ##############################
-def solution(ingredient) :
+def solution(ingredient):
     count = 0
-    s = ''
-    for n in ingredient :
+    s = ""
+    for n in ingredient:
         s += str(n)
-    
-    while len(s) > 3 and '1231' in s :
-        count += s.count('1231')
-        s = s.replace('1231', '')
-        
-    return count # 테스트 케이스 실패, 20min
+
+    while len(s) > 3 and "1231" in s:
+        count += s.count("1231")
+        s = s.replace("1231", "")
+
+    return count  # 테스트 케이스 실패, 20min
+
+
 #########################################
 def solution3(ingredient):
     stack = []
@@ -65,8 +71,10 @@ def solution3(ingredient):
             count += 1
         else:
             stack.pop()
-    
-    return count # 테스트케이스 시간 초과
+
+    return count  # 테스트케이스 시간 초과
+
+
 #########################################
 def solution(ingredient):
     stack = []
@@ -82,4 +90,4 @@ def solution(ingredient):
         stack[-4:] = []
         count += 1
 
-    return count # 최대 150.77ms 
+    return count  # 최대 150.77ms

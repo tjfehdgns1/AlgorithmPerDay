@@ -4,23 +4,27 @@ class Node:
         self.left = None
         self.right = None
 
+
 def preorder_traversal(node):
     if node is not None:
-        print(node.data, end='')
+        print(node.data, end="")
         preorder_traversal(node.left)
         preorder_traversal(node.right)
+
 
 def inorder_traversal(node):
     if node is not None:
         inorder_traversal(node.left)
-        print(node.data, end='')
+        print(node.data, end="")
         inorder_traversal(node.right)
+
 
 def postorder_traversal(node):
     if node is not None:
         postorder_traversal(node.left)
         postorder_traversal(node.right)
-        print(node.data, end='')
+        print(node.data, end="")
+
 
 def build_tree(nodes_info):
     node_dict = {}
@@ -31,15 +35,16 @@ def build_tree(nodes_info):
         if data not in node_dict:
             node_dict[data] = Node(data)
 
-        if left != '.':
+        if left != ".":
             node_dict[left] = Node(left)
             node_dict[data].left = node_dict[left]
 
-        if right != '.':
+        if right != ".":
             node_dict[right] = Node(right)
             node_dict[data].right = node_dict[right]
 
-    return node_dict['A']
+    return node_dict["A"]
+
 
 def main():
     N = int(input())
@@ -57,6 +62,7 @@ def main():
 
     # 후위 순회
     postorder_traversal(root)
+
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,5 @@
-array = [3,4,2,1,5,8,7,6,0,9]
+array = [3, 4, 2, 1, 5, 8, 7, 6, 0, 9]
+
 
 def quick_sort(arr, start, end):
     if start >= end:
@@ -19,11 +20,13 @@ def quick_sort(arr, start, end):
     quick_sort(arr, start, right - 1)
     quick_sort(arr, right + 1, end)
 
+
 quick_sort(array, 0, len(array) - 1)
 
 print(array)
-    
+
 # --- #
+
 
 def py_quick_sort(arr):
     if len(arr) <= 1:
@@ -37,8 +40,8 @@ def py_quick_sort(arr):
 
     return py_quick_sort(left) + [pivot] + py_quick_sort(right)
 
-print(py_quick_sort(array))
 
+print(py_quick_sort(array))
 
 
 def quick_sort1(arr):
@@ -51,6 +54,7 @@ def quick_sort1(arr):
     right = [x for x in arr if x > pivot]
 
     return quick_sort1(left) + middle + quick_sort1(right)
+
 
 # 테스트
 arr = [3, 6, 8, 10, 1, 2, 1]

@@ -7,6 +7,7 @@ def find_max_path_sum(triangle):
 
     return triangle[0][0]
 
+
 if __name__ == "__main__":
     n = int(input())
     triangle = [list(map(int, input().split())) for _ in range(n)]

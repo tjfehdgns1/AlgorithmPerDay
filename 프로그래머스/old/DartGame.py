@@ -1,4 +1,4 @@
-'''다트 게임
+"""다트 게임
 카카오톡에 뜬 네 번째 별! 심심할 땐? 카카오톡 게임별~
 
 Game Star
@@ -39,7 +39,8 @@ Single(S), Double(D), Triple(T)은 점수마다 하나씩 존재한다.
 4	    1S*2T*3S	23	    11 * 2 * 2 + 23 * 2 + 31
 5	    1D#2S*3S	5	    12 * (-1) * 2 + 21 * 2 + 31
 6	    1T2D3D#	    -4	    13 + 22 + 32 * (-1)
-7	    1D2S3T*	    59	    12 + 21 * 2 + 33 * 2'''
+7	    1D2S3T*	    59	    12 + 21 * 2 + 33 * 2"""
+
 
 def solution(dartResult):
     scores = []
@@ -48,25 +49,25 @@ def solution(dartResult):
         char = dartResult[i]
         if char.isdigit():
             # 두 자리 수 체크
-            if char == '1' and dartResult[i+1] == '0':
+            if char == "1" and dartResult[i + 1] == "0":
                 score = 10
                 i += 1
             else:
                 score = int(char)
             scores.append(score)
-        elif char in ['S', 'D', 'T']:
-            if char == 'S':
+        elif char in ["S", "D", "T"]:
+            if char == "S":
                 pass
-            elif char == 'D':
+            elif char == "D":
                 scores[-1] **= 2
-            elif char == 'T':
+            elif char == "T":
                 scores[-1] **= 3
-        elif char in ['*', '#']:
-            if char == '*':
+        elif char in ["*", "#"]:
+            if char == "*":
                 scores[-1] *= 2
                 if len(scores) > 1:
                     scores[-2] *= 2
-            elif char == '#':
+            elif char == "#":
                 scores[-1] *= -1
         i += 1
     return sum(scores)
@@ -74,15 +75,16 @@ def solution(dartResult):
 
 import re
 
+
 def solution(dartResult):
-    bonus = {'S' : 1, 'D' : 2, 'T' : 3}
-    option = {'' : 1, '*' : 2, '#' : -1}
-    p = re.compile('(\d+)([SDT])([*#]?)')
+    bonus = {"S": 1, "D": 2, "T": 3}
+    option = {"": 1, "*": 2, "#": -1}
+    p = re.compile("(\d+)([SDT])([*#]?)")
     dart = p.findall(dartResult)
     for i in range(len(dart)):
-        if dart[i][2] == '*' and i > 0:
-            dart[i-1] *= 2
+        if dart[i][2] == "*" and i > 0:
+            dart[i - 1] *= 2
         dart[i] = int(dart[i][0]) ** bonus[dart[i][1]] * option[dart[i][2]]
 
     answer = sum(dart)
-    return answer # 눈에 띄이는 풀이
+    return answer  # 눈에 띄이는 풀이

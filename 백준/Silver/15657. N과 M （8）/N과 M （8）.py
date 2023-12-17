@@ -3,7 +3,7 @@ import sys
 
 def sol(stack, given, n, m, start):
     if len(stack) == m:
-        print(' '.join(map(str, stack)))
+        print(" ".join(map(str, stack)))
         return
 
     for i in range(start, n):
@@ -19,6 +19,7 @@ def main():
 
     stack = []
     sol(stack, given, n, m, 0)
+
 
 if __name__ == "__main__":
     main()

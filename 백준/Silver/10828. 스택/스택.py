@@ -1,4 +1,5 @@
 from sys import stdin
+
 input = stdin.readline
 n = int(input())
 stack = []
@@ -6,21 +7,21 @@ stack = []
 for _ in range(n):
     command = input().split()
 
-    if command[0] == 'push':
+    if command[0] == "push":
         stack.append(int(command[1]))
-    elif command[0] == 'pop':
+    elif command[0] == "pop":
         if stack:
             print(stack.pop())
         else:
             print(-1)
-    elif command[0] == 'size':
+    elif command[0] == "size":
         print(len(stack))
-    elif command[0] == 'empty':
+    elif command[0] == "empty":
         if stack:
             print(0)
         else:
             print(1)
-    elif command[0] == 'top':
+    elif command[0] == "top":
         if stack:
             print(stack[-1])
         else:

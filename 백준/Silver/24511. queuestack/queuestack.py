@@ -13,7 +13,7 @@ r = deque()
 for j in range(n):
     if a[j] == 0:
         r.appendleft(b[j])
-        
+
 for i in range(m):
     r.append(c[i])
-    print(r.popleft(), end=' ')
+    print(r.popleft(), end=" ")

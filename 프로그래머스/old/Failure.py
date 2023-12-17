@@ -1,4 +1,4 @@
-'''실패율
+"""실패율
 
 슈퍼 게임 개발자 오렐리는 큰 고민에 빠졌다. 그녀가 만든 프랜즈 오천성이 대성공을 거뒀지만, 요즘 신규 사용자의 수가 급감한 것이다. 원인은 신규 사용자와 기존 사용자 사이에 스테이지 차이가 너무 큰 것이 문제였다.
 
@@ -19,32 +19,36 @@ stages에는 1 이상 N + 1 이하의 자연수가 담겨있다.
 입출력 예
 N	stages	result
 5	[2, 1, 2, 6, 2, 4, 3, 3]	[3,4,2,1,5]
-4	[4,4,4,4,4]	[4,1,2,3]'''
+4	[4,4,4,4,4]	[4,1,2,3]"""
+
 
 def solution(N, stages):
-    values = range(1,N+1)
+    values = range(1, N + 1)
     keys = []
-    for i in values :
+    for i in values:
         keys.append(stages.count(i))
 
     d = dict(zip(values, keys))
-    keys.sort(reverse = True)
-    return [d[k] for k in keys] # 오류
+    keys.sort(reverse=True)
+    return [d[k] for k in keys]  # 오류
+
 
 def solution(N, stages):
     c = []
     f = []
     left = len(stages)
-    
-    for i in range(1,N+1) :
+
+    for i in range(1, N + 1):
         c.append(stages.count(i))
-        f.append((i,c[i-1]/left))
+        f.append((i, c[i - 1] / left))
         left -= stages.count(i)
 
     f.sort(key=lambda x: (-x[1], x[0]))
-    return [stage for stage, f in f] # 런타임 에러, 최대 3499.57ms
+    return [stage for stage, f in f]  # 런타임 에러, 최대 3499.57ms
+
 
 from collections import Counter
+
 
 def solution(N, stages):
     # Counter 클래스를 사용하여 각 스테이지까지 도전한 사용자 수와 실패한 사용자 수를 계산
@@ -52,17 +56,18 @@ def solution(N, stages):
     # 실패율을 저장할 리스트 생성
     failure_rates = []
     # 스테이지 번호를 1부터 N까지 반복하면서 실패율 계산
-    for i in range(1, N+1):
+    for i in range(1, N + 1):
         # 해당 스테이지까지 도전한 사용자 수 계산
         num_users = sum([count for stage, count in counter.items() if stage >= i])
         # 해당 스테이지에서 실패한 사용자 수 계산
         num_failures = counter[i] if i in counter else 0
         # 실패율 계산하여 리스트에 추가
-        failure_rates.append((i, num_failures/num_users if num_users != 0 else 0))
+        failure_rates.append((i, num_failures / num_users if num_users != 0 else 0))
     # 실패율을 내림차순으로 정렬
     failure_rates.sort(key=lambda x: (-x[1], x[0]))
     # 정렬된 실패율에서 스테이지 번호만 추출하여 리스트로 반환
-    return [stage for stage, failure_rate in failure_rates] # 최대 45ms
+    return [stage for stage, failure_rate in failure_rates]  # 최대 45ms
+
 
 def solution(N, stages):
     answer = []
@@ -71,7 +76,7 @@ def solution(N, stages):
     for stage in stages:
         info[stage] += 1
     for i in range(N):
-        be = sum(info[(i + 1):])
+        be = sum(info[(i + 1) :])
         yet = info[i + 1]
         if be == 0:
             fail.append((str(i + 1), 0))
@@ -79,4 +84,4 @@ def solution(N, stages):
             fail.append((str(i + 1), yet / be))
     for item in sorted(fail, key=lambda x: x[1], reverse=True):
         answer.append(int(item[0]))
-    return answer # 24.95ms
+    return answer  # 24.95ms

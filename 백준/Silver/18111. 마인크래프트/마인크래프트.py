@@ -4,7 +4,7 @@ input = stdin.readline
 n, m, b = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
-time = float('inf')
+time = float("inf")
 height = 0
 
 for i in range(257):
@@ -26,4 +26,4 @@ for i in range(257):
         time = t
         height = i
 
-print(time, height, sep=' ')
+print(time, height, sep=" ")

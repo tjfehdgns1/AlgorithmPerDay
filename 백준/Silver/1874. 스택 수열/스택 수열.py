@@ -7,16 +7,16 @@ current = 1
 flag = False
 for i in given:
     while current <= i:
-        result.append('+')
+        result.append("+")
         stack.append(current)
         current += 1
 
     if stack[-1] == i:
-        result.append('-')
+        result.append("-")
         stack.pop()
 
     else:
-        print('NO')
+        print("NO")
         flag = True
         break
 

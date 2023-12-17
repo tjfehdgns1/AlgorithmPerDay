@@ -1,8 +1,11 @@
 def matrix_multiply(a, b, mod):
     return (
-        (a[0] * b[0] + a[1] * b[2]) % mod, (a[0] * b[1] + a[1] * b[3]) % mod,
-        (a[2] * b[0] + a[3] * b[2]) % mod, (a[2] * b[1] + a[3] * b[3]) % mod
+        (a[0] * b[0] + a[1] * b[2]) % mod,
+        (a[0] * b[1] + a[1] * b[3]) % mod,
+        (a[2] * b[0] + a[3] * b[2]) % mod,
+        (a[2] * b[1] + a[3] * b[3]) % mod,
     )
+
 
 def matrix_power(matrix, exp, mod):
     result = (1, 0, 0, 1)
@@ -12,6 +15,7 @@ def matrix_power(matrix, exp, mod):
         matrix = matrix_multiply(matrix, matrix, mod)
         exp //= 2
     return result
+
 
 def fibonacci(n, mod):
     if n == 0:

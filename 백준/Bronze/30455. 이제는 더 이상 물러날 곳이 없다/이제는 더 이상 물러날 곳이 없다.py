@@ -1,5 +1,5 @@
 n = int(input())
 if n % 2 == 0:
-    print('Duck')
+    print("Duck")
 else:
-    print('Goose')
+    print("Goose")

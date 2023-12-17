@@ -16,7 +16,7 @@ class AntColony:
             alpha (int or float): exponenet on pheromone, higher alpha gives pheromone more weight.
             beta (int or float): exponent on distance, higher beta give distance more weight
         """
-        self.distances  = distances
+        self.distances = distances
         self.pheromone = np.ones(self.distances.shape) / len(distances)
         self.all_inds = range(len(distances))
         self.pheromone_decay = pheromone_decay
@@ -41,7 +41,7 @@ class AntColony:
             all_inds (list): list of all paths selected by the ants
             decay (float): pheromone decay parameter
         """
-        self.pheromone *=(1-decay)
+        self.pheromone *= 1 - decay
         for path in all_inds:
             for move in path:
                 self.pheromone[move] += 1.0 / self.distances[move]
@@ -73,7 +73,7 @@ class AntColony:
             path.append((prev, move))
             prev = move
             visited.add(move)
-        path.append((prev, start)) # going back to where we started    
+        path.append((prev, start))  # going back to where we started
         return path
 
     def pick_move(self, pheromone, dist, visited):
@@ -85,7 +85,7 @@ class AntColony:
         Returns:
             int: the index of the next node to visit
         """
-        row = pheromone ** self.alpha * (( 1.0 / dist) ** self.beta)
+        row = pheromone**self.alpha * ((1.0 / dist) ** self.beta)
 
         row[list(visited)] = 0
 
@@ -98,7 +98,7 @@ class AntColony:
 
         def update(frame):
             ax.clear()
-            ax.set_title(f'Iteration {frame + 1}')
+            ax.set_title(f"Iteration {frame + 1}")
             self.run(1)
             paths = self.gen_all_paths()
             self.plot_paths(ax, paths)
@@ -108,17 +108,17 @@ class AntColony:
 
     def plot_paths(self, ax, paths):
         for path in paths:
-            line = Line2D(*zip(*path), marker='o', markersize=8, linestyle='-', linewidth=2)
+            line = Line2D(
+                *zip(*path), marker="o", markersize=8, linestyle="-", linewidth=2
+            )
             ax.add_line(line)
         ax.set_xlim(-1, len(self.distances))
         ax.set_ylim(-1, len(self.distances))
         plt.pause(0.1)
 
+
 # 거리 행렬 생성 (예시)
-distances = np.array([[0, 2, 3, 4],
-                      [2, 0, 5, 6],
-                      [3, 5, 0, 7],
-                      [4, 6, 7, 0]])
+distances = np.array([[0, 2, 3, 4], [2, 0, 5, 6], [3, 5, 0, 7], [4, 6, 7, 0]])
 
 # ACO 알고리즘 생성
 aco = AntColony(distances, n_ants=5)

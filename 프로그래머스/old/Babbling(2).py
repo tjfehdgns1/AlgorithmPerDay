@@ -1,4 +1,4 @@
-'''옹알이 (2)
+"""옹알이 (2)
 문제 설명
 머쓱이는 태어난 지 11개월 된 조카를 돌보고 있습니다. 조카는 아직 "aya", "ye", "woo", "ma" 네 가지 발음과 네 가지 발음을 조합해서 만들 수 있는 발음밖에 하지 못하고 연속해서 같은 발음을 하는 것을 어려워합니다. 문자열 배열 babbling이 매개변수로 주어질 때, 머쓱이의 조카가 발음할 수 있는 단어의 개수를 return하도록 solution 함수를 완성해주세요.
 
@@ -9,29 +9,31 @@
 입출력 예
 babbling	                                    result
 ["aya", "yee", "u", "maa"]	                    1
-["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]	2'''
+["ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"]	2"""
+
 
 def solution(babbling):
     count = 0
     speaks = ["aya", "ye", "woo", "ma"]
-    for word in babbling :
-        for speak in speaks :  
-            if speak in word :
-                word = word.replace(speak," ")
-            if "  " in word :
+    for word in babbling:
+        for speak in speaks:
+            if speak in word:
+                word = word.replace(speak, " ")
+            if "  " in word:
                 break
-        word = word.replace(" ","")        
-        if len(word) == 0 :
+        word = word.replace(" ", "")
+        if len(word) == 0:
             count += 1
-    return count # X timeout
+    return count  # X timeout
+
 
 def solution(babbling):
     count = 0
-    babble = [ "aya", "ye", "woo", "ma" ]
+    babble = ["aya", "ye", "woo", "ma"]
     for utter in babbling:
         for text in babble:
             if text * 2 not in utter:
-                utter = utter.replace(text, ' ')
-        if utter.strip() == '':
+                utter = utter.replace(text, " ")
+        if utter.strip() == "":
             count += 1
-    return count # 연속된 단어가 없을때만 바꾸도록
+    return count  # 연속된 단어가 없을때만 바꾸도록

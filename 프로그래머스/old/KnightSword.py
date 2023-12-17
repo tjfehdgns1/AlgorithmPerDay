@@ -1,4 +1,4 @@
-'''기사단원의 무기
+"""기사단원의 무기
 문제 설명
 숫자나라 기사단의 각 기사에게는 1번부터 number까지 번호가 지정되어 있습니다. 기사들은 무기점에서 무기를 구매하려고 합니다.
 
@@ -15,18 +15,19 @@
 입출력 예
 number	limit	power	result
 5	    3	    2	    10
-10	    3	    2   	21'''
+10	    3	    2   	21"""
+
 
 def solution(number, limit, power):
     kg = 0
-    for i in range(1,number+1) :
+    for i in range(1, number + 1):
         count = 0
-        for j in range(1, int(i**0.5)+1) :
-            if i % j == 0 :
+        for j in range(1, int(i**0.5) + 1):
+            if i % j == 0:
                 # j가 i의 제곱근이 아니면 j와 i//j 모두 약수이므로 개수에 2를 더해줌
-                if j**2 != i :
+                if j**2 != i:
                     count += 2
-                else : 
+                else:
                     count += 1
         kg += power if count > limit else count
-    return kg # solved 20분 909.64ms
+    return kg  # solved 20분 909.64ms

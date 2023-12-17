@@ -18,12 +18,12 @@ m = max(dic.values())
 c = []
 
 for j in list(dic.keys()):
-	if dic[j] == m:
-		c.append(j)
+    if dic[j] == m:
+        c.append(j)
 
 if len(c) > 1:
-	print(c[1])
+    print(c[1])
 else:
-	print(c[0])
+    print(c[0])
 
 print(max(arr) - min(arr))

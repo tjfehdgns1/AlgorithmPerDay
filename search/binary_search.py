@@ -12,11 +12,12 @@ def binary_search(arr, key):
             low = mid + 1
     return False
 
+
 if __name__ == "__main__":
     a = list(range(10))
     k = 5
-    result = binary_search(a,k)
+    result = binary_search(a, k)
     if result:
-        print('gg')
+        print("gg")
     else:
-        print('whut!')
+        print("whut!")

@@ -5,7 +5,7 @@ input = stdin.readline
 
 n = int(input())
 
-a = deque(range(1, n+1))
+a = deque(range(1, n + 1))
 
 while len(a) > 1:
     a.popleft()

@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def bfs(start, end):
     visited = [False] * 100001
     queue = deque([(start, 0)])
@@ -16,6 +17,7 @@ def bfs(start, end):
             if 0 <= next_pos <= 100000 and not visited[next_pos]:
                 visited[next_pos] = True
                 queue.append((next_pos, time + 1))
+
 
 N, K = map(int, input().split())
 

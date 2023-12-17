@@ -16,8 +16,8 @@ def dfs(graph, start, visited):
 
 
 def main():
-    n = int(input()) 
-    m = int(input())  
+    n = int(input())
+    m = int(input())
 
     graph = defaultdict(list)
     for _ in range(m):

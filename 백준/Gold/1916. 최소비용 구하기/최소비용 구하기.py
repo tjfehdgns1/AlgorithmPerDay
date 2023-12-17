@@ -3,7 +3,7 @@ import sys
 
 
 def dijkstra(graph, start, end):
-    distances = {node: float('inf') for node in graph}
+    distances = {node: float("inf") for node in graph}
     distances[start] = 0
     priority_queue = [(0, start)]
 
@@ -22,6 +22,7 @@ def dijkstra(graph, start, end):
 
     return distances[end]
 
+
 def main():
     input = sys.stdin.readline
     N = int(input())
@@ -38,6 +39,7 @@ def main():
 
     result = dijkstra(graph, start_city, end_city)
     print(result)
+
 
 if __name__ == "__main__":
     main()

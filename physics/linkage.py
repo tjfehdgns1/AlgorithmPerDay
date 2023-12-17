@@ -15,10 +15,9 @@ x3, y3 = d + c * m.cos(theta[2]), c * m.sin(theta[2])
 x4, y4 = d, 0
 
 plt.figure(figsize=(8, 6))
-plt.plot([x1, x2, x3, x4, x1], [y1, y2, y3, y4, y1], 'bo-')
-plt.title('4-Bar Linkage')
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
+plt.plot([x1, x2, x3, x4, x1], [y1, y2, y3, y4, y1], "bo-")
+plt.title("4-Bar Linkage")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
 plt.grid(True)
 plt.show()
-

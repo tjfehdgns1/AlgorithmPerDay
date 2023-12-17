@@ -11,6 +11,7 @@ def padovan_sequence(n):
             p[i] = p[i - 1] + p[i - 5]
         return p[n]
 
+
 if __name__ == "__main__":
     T = int(input())
     for _ in range(T):

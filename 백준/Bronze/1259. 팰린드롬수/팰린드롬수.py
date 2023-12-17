@@ -3,9 +3,9 @@ from sys import stdin
 while True:
     nums = input().strip()
 
-    if nums == '0':
+    if nums == "0":
         break
     if nums == nums[::-1]:
-        print('yes')
+        print("yes")
     else:
-        print('no')
+        print("no")

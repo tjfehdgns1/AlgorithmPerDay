@@ -1,4 +1,11 @@
-array = [1,5,3,4,7,2,]
+array = [
+    1,
+    5,
+    3,
+    4,
+    7,
+    2,
+]
 
 for i in range(len(array)):
     min_index = i

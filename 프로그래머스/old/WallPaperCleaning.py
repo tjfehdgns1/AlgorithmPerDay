@@ -1,4 +1,4 @@
-'''바탕화면 정리
+"""바탕화면 정리
 문제 설명
 코딩테스트를 준비하는 머쓱이는 프로그래머스에서 문제를 풀고 나중에 다시 코드를 보면서 공부하려고 작성한 코드를 컴퓨터 바탕화면에 아무 위치에나 저장해 둡니다. 
 저장한 코드가 많아지면서 머쓱이는 본인의 컴퓨터 바탕화면이 너무 지저분하다고 생각했습니다. 
@@ -38,38 +38,48 @@ wallpaper                                                                       
 [".#...", "..#..", "...#."]                                                                 [0, 1, 3, 4]
 ["..........", ".....#....", "......##..", "...##.....", "....#....."]	                    [1, 3, 5, 8]
 [".##...##.", "#..#.#..#", "#...#...#", ".#.....#.", "..#...#..", "...#.#...", "....#...."]	[0, 0, 7, 9]
-["..", "#."]	                                                                            [1, 0, 2, 1]'''
+["..", "#."]	                                                                            [1, 0, 2, 1]"""
+
 
 def solution(wallpaper):
-    result = [0,0,0,0]
+    result = [0, 0, 0, 0]
     for h, column in enumerate(wallpaper):
-        if '#' in column:
-            if result[1] == 0 and result[1] < h+1:
+        if "#" in column:
+            if result[1] == 0 and result[1] < h + 1:
                 result[1] = h + 1
             else:
-                if result[3] < h+1:
+                if result[3] < h + 1:
                     result[3] = h + 1
     for v, row in enumerate(wallpaper):
-        if '#' in row:
-            if result[0] == 0 and result[0] < v+1:
+        if "#" in row:
+            if result[0] == 0 and result[0] < v + 1:
                 result[0] = v
             else:
-                if result[2] < v+1:
+                if result[2] < v + 1:
                     result[2] = v + 1
-        
-    return result # 문제 풀이가 잘못됨, 시간오버
+
+    return result  # 문제 풀이가 잘못됨, 시간오버
+
+
 ################################################
 def solution(wallpaper):
-    result = [0,0,0,0]
-    file_coords = [(i, j) for i in range(len(wallpaper)) for j in range(len(wallpaper[0])) if wallpaper[i][j] == "#"]
-#    print(file_coords)
+    result = [0, 0, 0, 0]
+    file_coords = [
+        (i, j)
+        for i in range(len(wallpaper))
+        for j in range(len(wallpaper[0]))
+        if wallpaper[i][j] == "#"
+    ]
+    #    print(file_coords)
     file_coords.sort(key=lambda x: x[0])
     result[0] = file_coords[0][0]
-    result[2] = file_coords[len(file_coords)-1][0] + 1
+    result[2] = file_coords[len(file_coords) - 1][0] + 1
     file_coords.sort(key=lambda y: y[1])
     result[1] = file_coords[0][1]
-    result[3] = file_coords[len(file_coords)-1][1] + 1
-    return result # '#'의 위치 튜플로 구해놓고 x,y 각각 정렬, 최대 0.68ms
+    result[3] = file_coords[len(file_coords) - 1][1] + 1
+    return result  # '#'의 위치 튜플로 구해놓고 x,y 각각 정렬, 최대 0.68ms
+
+
 #######################################################################
 def solution(wall):
     a, b = [], []
@@ -78,4 +88,9 @@ def solution(wall):
             if wall[i][j] == "#":
                 a.append(i)
                 b.append(j)
-    return [min(a), min(b), max(a) + 1, max(b) + 1] # 다른 사람 답변, a와b에 각각 모든 x,y값 리스트에 넣고 최대 최소구하기
+    return [
+        min(a),
+        min(b),
+        max(a) + 1,
+        max(b) + 1,
+    ]  # 다른 사람 답변, a와b에 각각 모든 x,y값 리스트에 넣고 최대 최소구하기

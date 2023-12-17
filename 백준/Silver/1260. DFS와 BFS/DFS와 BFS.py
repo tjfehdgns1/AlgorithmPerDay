@@ -4,13 +4,15 @@ from collections import deque
 
 input = sys.stdin.readline
 
+
 def dfs(graph, start, visited):
     visited[start] = True
-    print(start, end=' ')
+    print(start, end=" ")
 
     for neighbor in sorted(graph[start]):
         if not visited[neighbor]:
             dfs(graph, neighbor, visited)
+
 
 def bfs(graph, start, visited):
     queue = deque([start])
@@ -18,12 +20,13 @@ def bfs(graph, start, visited):
 
     while queue:
         current = queue.popleft()
-        print(current, end=' ')
+        print(current, end=" ")
 
         for neighbor in sorted(graph[current]):
             if not visited[neighbor]:
                 visited[neighbor] = True
                 queue.append(neighbor)
+
 
 N, M, V = map(int, input().split())
 

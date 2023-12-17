@@ -9,6 +9,7 @@ def longest_increasing_subsequence(nums):
 
     return max(lis)
 
+
 n = int(input())
 sequence = list(map(int, input().split()))
 

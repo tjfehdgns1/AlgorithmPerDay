@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def bfs(i, j, visited, graph):
     queue = deque()
     queue.append((i, j))
@@ -19,6 +20,7 @@ def bfs(i, j, visited, graph):
                     visited[nx][ny] = visited[x][y] + 1
                     queue.append((nx, ny))
 
+
 def main():
     global N, M, dx, dy
     N, M = map(int, input().split())
@@ -34,10 +36,11 @@ def main():
     for i in range(N):
         for j in range(M):
             if graph[i][j] == 0:
-                print(0, end=' ')
+                print(0, end=" ")
             else:
-                print(visited[i][j], end=' ')
+                print(visited[i][j], end=" ")
         print()
+
 
 if __name__ == "__main__":
     main()

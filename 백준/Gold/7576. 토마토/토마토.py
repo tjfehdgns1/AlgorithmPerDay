@@ -23,13 +23,12 @@ def bfs_tomato(m, n, grid):
                 grid[nx][ny] = 1
                 que.append((nx, ny, day + 1))
 
-
     for row in grid:
         if 0 in row:
             return -1
 
-
     return day
+
 
 def main():
     input = sys.stdin.readline
@@ -38,6 +37,7 @@ def main():
 
     result = bfs_tomato(m, n, grid)
     print(result)
+
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,4 @@
-'''대충 만든 자판
+"""대충 만든 자판
 문제 설명
 휴대폰의 자판은 컴퓨터 키보드 자판과는 다르게 하나의 키에 여러 개의 문자가 할당될 수 있습니다. 키 하나에 여러 문자가 할당된 경우, 동일한 키를 연속해서 빠르게 누르면 할당된 순서대로 문자가 바뀝니다.
 
@@ -26,72 +26,79 @@ targets의 원소는 알파벳 대문자로만 이루어져 있습니다.
 keymap	            targets	        result
 ["ABACD", "BCEFD"]	["ABCD","AABB"]	[9, 4]
 ["AA"]	            ["B"]	        [-1]
-["AGZ", "BSSS"]	    ["ASA","BGZ"]	[4, 6]'''
+["AGZ", "BSSS"]	    ["ASA","BGZ"]	[4, 6]"""
+
 
 def solution(keymap, targets):
     result = [0] * len(targets)
-    for i, target in enumerate(targets) :
+    for i, target in enumerate(targets):
         count = [0] * len(keymap)
         print(f"{target} : target")
-        for j, key in enumerate(keymap) :
+        for j, key in enumerate(keymap):
             print(f"{key} : key")
-            for t in target :
-                if t in key :
+            for t in target:
+                if t in key:
                     count[j] += key.index(t) + 1
-                else :
+                else:
                     count[j] -= 1
         result[i] += min(count)
-    return result # 틀림
+    return result  # 틀림
+
+
 # keymap의 모든 인자를 왔다 갔다 해야함?
 
 keymap = ["ABACD", "BCEFD"]
-targets = ["ABCD","AABB"]
+targets = ["ABCD", "AABB"]
 result = solution(keymap, targets)
+
+
 ###################################################
 def solution1(keymap, targets):
     result = [0] * len(targets)
-    for i, target in enumerate(targets) :
-        
-        for t in target :
+    for i, target in enumerate(targets):
+        for t in target:
             count = [0] * len(keymap)
 
-            for j, key in enumerate(keymap) :
-            
-                if t in key :
+            for j, key in enumerate(keymap):
+                if t in key:
                     count[j] += key.index(t) + 1
-                else :
+                else:
                     count[j] -= 1
-            
-                if min(count) == -1 :
-                    result[i] += max(count)
-                elif min(count) > 0 :
-                    result[i] += min(count)    
 
-            if min(count) == -1 and max(count) == -1 :
+                if min(count) == -1:
+                    result[i] += max(count)
+                elif min(count) > 0:
+                    result[i] += min(count)
+
+            if min(count) == -1 and max(count) == -1:
                 result[i] = -1
-    return result # 테스트 케이스 실패
+    return result  # 테스트 케이스 실패
+
 
 keymap = ["ABACD", "BCEFD"]
-targets = ["ABCD","AABB"]
+targets = ["ABCD", "AABB"]
 result = solution1(keymap, targets)
+
+
 ###################################################
 def solution2(keymap, targets):
     result = []
-    for target in targets :
+    for target in targets:
         add = 0
-        
-        for char in target :
+
+        for char in target:
             found = False
             count = 101
-            for key in keymap :
-                if char in key :
+            for key in keymap:
+                if char in key:
                     count = min(key.index(char) + 1, count)
                     found = True
-            if not found :
+            if not found:
                 add = -1
                 break
             add += count
         result.append(add)
     return result
+
 
 result = solution2(keymap, targets)

@@ -1,4 +1,5 @@
 from sys import stdin
+
 input = stdin.readline
 
 n = int(input())
@@ -15,6 +16,6 @@ for i in a:
 
 for num in b:
     if num in dic:
-        print(dic[num], end=' ')
+        print(dic[num], end=" ")
     else:
-        print(0, end=' ')
+        print(0, end=" ")

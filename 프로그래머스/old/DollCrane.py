@@ -1,4 +1,4 @@
-'''크레인 인형뽑기 게임
+"""크레인 인형뽑기 게임
 문제 설명
 게임개발자인 "죠르디"는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.
 "죠르디"는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.
@@ -26,7 +26,7 @@ moves 배열의 크기는 1 이상 1,000 이하입니다.
 moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.
 입출력 예
 board	                                                        moves           	result
-[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]	[1,5,3,5,1,2,1,4]	4'''
+[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]	[1,5,3,5,1,2,1,4]	4"""
 
 
 def solution(board, moves):
@@ -34,16 +34,17 @@ def solution(board, moves):
     pop_count = 0
     for move in moves:
         for i in range(len(board)):
-            if board[i][move-1] != 0:
-                doll = board[i][move-1]
-                board[i][move-1] = 0
+            if board[i][move - 1] != 0:
+                doll = board[i][move - 1]
+                board[i][move - 1] = 0
                 if len(basket) > 0 and basket[-1] == doll:
                     basket.pop()
                     pop_count += 2
                 else:
                     basket.append(doll)
                 break
-    return pop_count # 시간 초과 , 스택
+    return pop_count  # 시간 초과 , 스택
+
 
 def solution1(board, moves):
     cols = list(map(lambda x: list(filter(lambda y: y > 0, x)), zip(*board)))

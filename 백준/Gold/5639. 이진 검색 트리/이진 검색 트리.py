@@ -7,6 +7,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 def construct_bst(preorder):
     if not preorder:
         return None
@@ -29,6 +30,7 @@ def construct_bst(preorder):
 
     return root
 
+
 def postorder_traversal(root):
     result = []
 
@@ -40,6 +42,7 @@ def postorder_traversal(root):
 
     helper(root)
     return result
+
 
 sys.setrecursionlimit(10000)
 preorder_result = []

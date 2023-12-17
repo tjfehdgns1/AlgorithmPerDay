@@ -1,4 +1,4 @@
-'''개인정보 수집 유효기간
+"""개인정보 수집 유효기간
 문제 설명
 고객의 약관 동의를 얻어서 수집된 1~n번으로 분류되는 개인정보 n개가 있습니다. 
 약관 종류는 여러 가지 있으며 각 약관마다 개인정보 보관 유효기간이 정해져 있습니다. 
@@ -51,47 +51,51 @@ DD가 한 자릿수인 경우 앞에 0이 붙습니다.
 입출력 예
 today	        terms	                privacies	                                                                        result
 "2022.05.19"	["A 6", "B 12", "C 3"]	["2021.05.02 A", "2021.07.01 B", "2022.02.19 C", "2022.02.20 C"]	                [1, 3]
-"2020.01.01"	["Z 3", "D 5"]	        ["2019.01.01 D", "2019.11.15 Z", "2019.08.02 D", "2019.07.01 D", "2018.12.28 Z"]	[1, 4, 5]'''
+"2020.01.01"	["Z 3", "D 5"]	        ["2019.01.01 D", "2019.11.15 Z", "2019.08.02 D", "2019.07.01 D", "2018.12.28 Z"]	[1, 4, 5]"""
+
 
 def solution(today, terms, privacies):
     expired = []
     term_dic = {}
-    
+
     for term in terms:
-        key, value = term.split(' ')
+        key, value = term.split(" ")
         term_dic[key] = int(value)
     print(term_dic)
-    
-    for i,privacy in enumerate(privacies):
-        date, term = privacy.split(' ')
+
+    for i, privacy in enumerate(privacies):
+        date, term = privacy.split(" ")
         added = int(term_dic[term]) + int(date[5:7])
         print(added)
         if added > 12:
             date[2:3] = str(int(date[2:3]) + 1)
             if added - int(date[5:7]) > 10:
                 date[5:7] = str(added - int(date[5:7]))
-            else :
-                date[5:7] = '0'+ str(added - int(date[5:7]))
-        
+            else:
+                date[5:7] = "0" + str(added - int(date[5:7]))
+
         if today > date:
             expired.append(i)
-    return expired # 문자열은 불변 객체
+    return expired  # 문자열은 불변 객체
+
+
 #######################################
 def transdate(date):
-    year,month,day = map(int,date.split('.'))
-    return year*12*28 + month*28 + day
+    year, month, day = map(int, date.split("."))
+    return year * 12 * 28 + month * 28 + day
+
 
 def solution(today, terms, privacies):
     expire = []
     term_dic = {}
-    
+
     for term in terms:
-        key, value = term.split(' ')
+        key, value = term.split(" ")
         term_dic[key] = int(value)
-    
+
     for idx, privacy in enumerate(privacies):
-        date, term = privacy.split(' ')
-        
+        date, term = privacy.split(" ")
+
         if transdate(today) >= transdate(date) + term_dic[term] * 28:
-            expire.append(idx+1)
-    return expire # 45min, 0.37ms
+            expire.append(idx + 1)
+    return expire  # 45min, 0.37ms

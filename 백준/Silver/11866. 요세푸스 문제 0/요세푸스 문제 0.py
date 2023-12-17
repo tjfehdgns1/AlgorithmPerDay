@@ -6,10 +6,12 @@ result = []
 
 circle = deque(range(1, N + 1))
 
+
 def josephus(circle, K):
     circle.rotate(-K + 1)
     removed_person = circle.popleft()
     return removed_person
+
 
 while circle:
     removed_person = josephus(circle, K)

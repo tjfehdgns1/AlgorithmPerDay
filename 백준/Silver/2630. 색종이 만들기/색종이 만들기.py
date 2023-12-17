@@ -5,6 +5,7 @@ paper = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
 result = []
 
+
 def solution(x, y, N):
     color = paper[x][y]
     for i in range(x, x + N):
@@ -20,12 +21,14 @@ def solution(x, y, N):
     else:
         result.append(1)
 
+
 def main():
     global result
     global N
     solution(0, 0, N)
     print(result.count(0))
     print(result.count(1))
+
 
 if __name__ == "__main__":
     main()

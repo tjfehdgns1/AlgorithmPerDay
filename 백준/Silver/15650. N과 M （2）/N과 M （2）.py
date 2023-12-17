@@ -1,8 +1,8 @@
 def backtracking(N, M, result, visited, start):
     if len(result) == M:
-        print(' '.join(map(str, result)))
+        print(" ".join(map(str, result)))
         return
-    
+
     for i in range(start, N + 1):
         if not visited[i]:
             visited[i] = True
@@ -11,12 +11,14 @@ def backtracking(N, M, result, visited, start):
             visited[i] = False
             result.pop()
 
+
 def main():
     N, M = map(int, input().split())
     visited = [False] * (N + 1)
     result = []
 
     backtracking(N, M, result, visited, 1)
+
 
 if __name__ == "__main__":
     main()

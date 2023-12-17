@@ -1,4 +1,4 @@
-'''문자열 나누기
+"""문자열 나누기
 문제 설명
 문자열 s가 입력되었을 때 다음 규칙을 따라서 이 문자열을 여러 문자열로 분해하려고 합니다.
 
@@ -15,23 +15,28 @@ s는 영어 소문자로만 이루어져 있습니다.
 s	                result
 "banana"	        3
 "abracadabra"	    6
-"aaabbaccccabba"	3'''
-def solution(s) : 
+"aaabbaccccabba"	3"""
+
+
+def solution(s):
     count = 0
+
     def cut(s):
         x = 1
         nonlocal count
-        if s != '' :
-            for i, char in enumerate(s[1:]) :
-                if char == s[0] :
+        if s != "":
+            for i, char in enumerate(s[1:]):
+                if char == s[0]:
                     x += 1
-                if x == (i+2-x) :
+                if x == (i + 2 - x):
                     count += 1
-                    return cut(s[i+2:])
-            return s     
-        else :
-            return count   
-    return count  #null
+                    return cut(s[i + 2 :])
+            return s
+        else:
+            return count
+
+    return count  # null
+
 
 s = "banana"
 result = solution(s)
@@ -40,64 +45,68 @@ print(result)
 
 def solution(s):
     count = 0
+
     def cut(s):
         nonlocal count
         x = 1
-        if len(s) == 1 :
+        if len(s) == 1:
             return count + 1
         if s:
             for i, char in enumerate(s[1:]):
                 if char == s[0]:
                     x += 1
-                if x == (i+2-x) :
+                if x == (i + 2 - x):
                     count += 1
                     print(count)
-                    return cut(s[i+2:])
+                    return cut(s[i + 2 :])
             return s
-        
+
         else:
             return count
-    return cut(s) # 테스트 실패 1시간
+
+    return cut(s)  # 테스트 실패 1시간
 
 
-def solution(s) :
+def solution(s):
     count = 0
-    while s :
+    while s:
         x = 1
-        for i, char in enumerate(s[1:]) :
-                if char == s[0] :
-                    x += 1
-                if x == (i+2-x) :
-                    count += 1
-                    s = s[i+2:]
-                    break
-    return count # 10초 초과
+        for i, char in enumerate(s[1:]):
+            if char == s[0]:
+                x += 1
+            if x == (i + 2 - x):
+                count += 1
+                s = s[i + 2 :]
+                break
+    return count  # 10초 초과
 
-def solution(s) :
+
+def solution(s):
     count = 0
-    while s :
+    while s:
         x = 1
-        if len(s) == 1 :
+        if len(s) == 1:
             count += 1
             break
-        for i, char in enumerate(s[1:]) :
-                if char == s[0] :
-                    x += 1
-                if x == (i+2-x) :
-                    count += 1
-                    s = s[i+2:]
-                    break
-    return count # 시간 초과
+        for i, char in enumerate(s[1:]):
+            if char == s[0]:
+                x += 1
+            if x == (i + 2 - x):
+                count += 1
+                s = s[i + 2 :]
+                break
+    return count  # 시간 초과
 
-def solution(s) :
+
+def solution(s):
     count = 0
-    l, r = 0 ,0
-    for char in s :
-        if l == r :
+    l, r = 0, 0
+    for char in s:
+        if l == r:
             count += 1
             k = char
-        if k == char :
+        if k == char:
             l += 1
-        else :
+        else:
             r += 1
     return count

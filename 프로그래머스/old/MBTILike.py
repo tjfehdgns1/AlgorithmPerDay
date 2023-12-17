@@ -72,38 +72,44 @@ survey	                        choices	        result
 ["AN", "CF", "MJ", "RT", "NA"]	[5, 3, 2, 7, 5]	"TCMA"
 ["TR", "RT", "TR"]	            [7, 1, 3]	    "RCJA"'''
 
+
 def solution(surveys, choices):
-    answer = ''
+    answer = ""
     mbti = {
-        'R' : 0,'T' : 0,
-        'C' : 0,'F' : 0,
-        'J' : 0,'M' : 0,
-        'A' : 0,'N' : 0,
-        }
+        "R": 0,
+        "T": 0,
+        "C": 0,
+        "F": 0,
+        "J": 0,
+        "M": 0,
+        "A": 0,
+        "N": 0,
+    }
     # 점수 삽입
-    for survey, choice in zip(surveys,choices):
+    for survey, choice in zip(surveys, choices):
         if choice < 4:
             mbti[survey[0]] += 4 - choice
         elif choice > 4:
             mbti[survey[1]] += choice - 4
     # 2i로 인덱싱 해서 비교 후 mbti 반환
     li = list(mbti.items())
-    for i in range(0,8,2):
-        if li[i][1] < li[i+1][1]:
-            answer += li[i+1][0]
-        else :
+    for i in range(0, 8, 2):
+        if li[i][1] < li[i + 1][1]:
+            answer += li[i + 1][0]
+        else:
             answer += li[i][0]
-    return answer # 한시간, 3.42ms
+    return answer  # 한시간, 3.42ms
+
+
 ###########################
 def solution(survey, choices):
-
-    my_dict = {"RT":0,"CF":0,"JM":0,"AN":0}
-    for A,B in zip(survey,choices):
+    my_dict = {"RT": 0, "CF": 0, "JM": 0, "AN": 0}
+    for A, B in zip(survey, choices):
         if A not in my_dict.keys():
             A = A[::-1]
-            my_dict[A] -= B-4
+            my_dict[A] -= B - 4
         else:
-            my_dict[A] += B-4
+            my_dict[A] += B - 4
 
     result = ""
     for name in my_dict.keys():
@@ -114,22 +120,32 @@ def solution(survey, choices):
         else:
             result += sorted(name)[0]
 
-    return result # 생각을 다르게한 풀이
+    return result  # 생각을 다르게한 풀이
+
+
 #####################
 def solution(survey, choices):
-    answer = ''
-    RTCFJMAN = [0,0,0,0,0,0,0,0]
+    answer = ""
+    RTCFJMAN = [0, 0, 0, 0, 0, 0, 0, 0]
     str = "RTCFJMAN"
     for i in range(len(survey)):
-        RTCFJMAN[str.index(survey[i][1])] += choices[i]-4
+        RTCFJMAN[str.index(survey[i][1])] += choices[i] - 4
 
-    if(RTCFJMAN[0]>=RTCFJMAN[1]): answer+= "R"
-    else: answer+="T"
-    if(RTCFJMAN[2]>=RTCFJMAN[3]): answer+= "C"
-    else: answer+="F"
-    if(RTCFJMAN[4]>=RTCFJMAN[5]): answer+= "J"
-    else: answer+="M"
-    if(RTCFJMAN[6]>=RTCFJMAN[7]): answer+= "A"
-    else: answer+="N"
+    if RTCFJMAN[0] >= RTCFJMAN[1]:
+        answer += "R"
+    else:
+        answer += "T"
+    if RTCFJMAN[2] >= RTCFJMAN[3]:
+        answer += "C"
+    else:
+        answer += "F"
+    if RTCFJMAN[4] >= RTCFJMAN[5]:
+        answer += "J"
+    else:
+        answer += "M"
+    if RTCFJMAN[6] >= RTCFJMAN[7]:
+        answer += "A"
+    else:
+        answer += "N"
 
-    return answer # 하드코딩이지만 더 빠른, 0.51ms
+    return answer  # 하드코딩이지만 더 빠른, 0.51ms

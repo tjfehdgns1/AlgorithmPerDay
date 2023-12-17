@@ -19,6 +19,6 @@ def round5(n):
 
 c = round5(n * 0.15)
 
-b = a[c:n-c]
+b = a[c : n - c]
 
 print(round5(sum(b) / len(b)))

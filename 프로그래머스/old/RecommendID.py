@@ -77,39 +77,47 @@ def solution(new_id):
     print(step_one)
     # 2
     for char in step_one:
-        if char == '-' or char == '_' or char == '.' or char.isdigit() or char.isalpha():
+        if (
+            char == "-"
+            or char == "_"
+            or char == "."
+            or char.isdigit()
+            or char.isalpha()
+        ):
             step_two += char
     print(step_two)
-    # 3 
+    # 3
     for i, char in enumerate(step_two):
-        if i > 0 and char == '.' and step_two[i] == step_two[i-1]:
+        if i > 0 and char == "." and step_two[i] == step_two[i - 1]:
             continue
         step_three.append(char)
     print(step_three)
     # 4
-    if step_three and step_three[-1] == '.':
+    if step_three and step_three[-1] == ".":
         step_three.pop()
-    if step_three and step_three[0] == '.':
+    if step_three and step_three[0] == ".":
         step_three.pop(0)
     print(step_three)
     # 5
-    if len(step_three) == 0 :
-        step_five.append('a')
-    else :
+    if len(step_three) == 0:
+        step_five.append("a")
+    else:
         step_five = step_three
-    # 6 
+    # 6
     if len(step_five) > 15:
         step_six = step_five[:15]
-        if step_six[-1] == '.':
+        if step_six[-1] == ".":
             step_six.pop()
     else:
         step_six = step_five
-            
+
     print(step_six)
     # 7
     while len(step_six) < 3:
         step_six.append(step_six[-1])
-    return "".join(step_six) # 1hour , 최대 0.50ms
+    return "".join(step_six)  # 1hour , 최대 0.50ms
+
+
 # 규칙
 # 3자 이상 15자 이하
 # 소문자, 숫자, -, _, . 만 이용가능
@@ -126,21 +134,23 @@ def solution(new_id):
 
 import re
 
+
 def solution(new_id):
     st = new_id
     st = st.lower()
-    st = re.sub('[^a-z0-9\-_.]', '', st)
-    st = re.sub('\.+', '.', st)
-    st = re.sub('^[.]|[.]$', '', st)
-    st = 'a' if len(st) == 0 else st[:15]
-    st = re.sub('^[.]|[.]$', '', st)
-    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
-    return st # 다른 사람 답변 (정규식), 최대 0.51ms
+    st = re.sub("[^a-z0-9\-_.]", "", st)
+    st = re.sub("\.+", ".", st)
+    st = re.sub("^[.]|[.]$", "", st)
+    st = "a" if len(st) == 0 else st[:15]
+    st = re.sub("^[.]|[.]$", "", st)
+    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3 - len(st))])
+    return st  # 다른 사람 답변 (정규식), 최대 0.51ms
 
-'''특성상 일정한 규칙을 가진 텍스트 문자열을 사용하는 경우가 많은데, 이럴 때 정규 표현식을 사용한다
+
+"""특성상 일정한 규칙을 가진 텍스트 문자열을 사용하는 경우가 많은데, 이럴 때 정규 표현식을 사용한다
 메타 문자로 된 자원을 찾아야 하는 경우에는 다른 언어와 마찬가지로 앞에 역슬래시 \를 붙여 이스케이프 해주면 된다
 \ ^ $ . | [ ] ( ) * + ? { }
 
 ^[0-9]*$: 숫자
 ^[a-zA-Z]*$: 영문자. 패턴변경자를 써서 /^[a-z]*$/i 같이 쓸 수 있다.
-^[a-zA-Z0-9]*$: 영문/숫자'''
+^[a-zA-Z0-9]*$: 영문/숫자"""

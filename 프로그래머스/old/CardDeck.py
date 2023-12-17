@@ -27,8 +27,9 @@ cards1	                cards2	            goal	                            resul
 ["i", "drink", "water"]	["want", "to"]	["i", "want", "to", "drink", "water"]	"Yes"
 ["i", "water", "drink"]	["want", "to"]	["i", "want", "to", "drink", "water"]	"No"'''
 
+
 def solution(cards1, cards2, goal):
-    for word in goal :
+    for word in goal:
         if word in cards1:
             if cards1.index(word) == 0:
                 cards1.remove(word)
@@ -38,11 +39,14 @@ def solution(cards1, cards2, goal):
         else:
             break
     return "Yes" if not cards1 and not cards2 else "No"
+
+
 # 예외가 존재함
+
 
 def solution(cards1, cards2, goal):
     check = []
-    for word in goal :
+    for word in goal:
         if word in cards1:
             if cards1.index(word) == 0:
                 check.append(word)
@@ -53,13 +57,14 @@ def solution(cards1, cards2, goal):
                 cards2.remove(word)
         else:
             break
-    return "Yes" if check == goal else "No" # solved
+    return "Yes" if check == goal else "No"  # solved
+
 
 def solution(cards1, cards2, goal):
     for g in goal:
         if len(cards1) > 0 and g == cards1[0]:
-            cards1.pop(0)       
-        elif len(cards2) >0 and g == cards2[0]:
+            cards1.pop(0)
+        elif len(cards2) > 0 and g == cards2[0]:
             cards2.pop(0)
         else:
             return "No"

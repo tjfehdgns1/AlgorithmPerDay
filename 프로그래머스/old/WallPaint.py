@@ -1,4 +1,4 @@
-'''덧칠하기
+"""덧칠하기
     문제 설명
     어느 학교에 페인트가 칠해진 길이가 n미터인 벽이 있습니다. 벽에 동아리 · 학회 홍보나 회사 채용 공고 포스터 등을 게시하기 위해 테이프로 붙였다가 철거할 때 떼는 일이 많고 그 과정에서 페인트가 벗겨지곤 합니다. 페인트가 벗겨진 벽이 보기 흉해져 학교는 벽에 페인트를 덧칠하기로 했습니다.
 
@@ -25,26 +25,27 @@
     n	m	section	        result
     8	4	[2, 3, 6]	    2
     5	4	[1, 3]	        1
-    4	1	[1, 2, 3, 4]	4'''
+    4	1	[1, 2, 3, 4]	4"""
+
 
 def solution(n, m, section):
     count = 0
-    wall = list(range(1,n+1))
+    wall = list(range(1, n + 1))
     print(wall)
-    for num in section :
-        if num in wall :
-            wall = wall[wall.index(num)+m:]
+    for num in section:
+        if num in wall:
+            wall = wall[wall.index(num) + m :]
             count += 1
             print(wall)
-    return count # 시간 초과 14min 
-                 # 최대 시간 9560.28ms
+    return count  # 시간 초과 14min
+    # 최대 시간 9560.28ms
 
 
 def solution(n, m, section):
     count = 0
     idx = 0
-    for num in section :
-        if num >= idx :
+    for num in section:
+        if num >= idx:
             idx = num + m
             count += 1
-    return count # 인덱스만 활용해서 풀수있음  최대 5.41ms
+    return count  # 인덱스만 활용해서 풀수있음  최대 5.41ms

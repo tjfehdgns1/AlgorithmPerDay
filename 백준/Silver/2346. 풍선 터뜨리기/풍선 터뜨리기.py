@@ -1,5 +1,6 @@
 from sys import stdin
 from collections import deque
+
 input = stdin.readline
 
 n = int(input())
@@ -16,4 +17,4 @@ while a:
     elif p < 0:
         a.rotate(-p)
 
-print(' '.join(map(str, b)))
+print(" ".join(map(str, b)))

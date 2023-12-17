@@ -3,14 +3,13 @@ import sys
 
 def sol(stack, given, start, m):
     if len(stack) == m:
-        print(' '.join(map(str, stack)))
+        print(" ".join(map(str, stack)))
         return
-    
+
     for i in range(start, len(given)):
         stack.append(given[i])
         sol(stack, given, i, m)
         stack.pop()
-
 
 
 def main():
@@ -22,6 +21,6 @@ def main():
 
     sol(stack, given, 0, m)
 
-        
+
 if __name__ == "__main__":
     main()

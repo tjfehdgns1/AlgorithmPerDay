@@ -1,11 +1,11 @@
 import sys
 
 
-def back_track(stack, given, start, n ,m):
+def back_track(stack, given, start, n, m):
     if len(stack) == m:
-        print(' '.join(map(str, stack)))
+        print(" ".join(map(str, stack)))
         return
-    
+
     for i in range(n):
         if given[i] not in stack:
             stack.append(given[i])
@@ -20,6 +20,7 @@ def main():
     stack = []
 
     back_track(stack, given, 0, n, m)
-    
+
+
 if __name__ == "__main__":
     main()

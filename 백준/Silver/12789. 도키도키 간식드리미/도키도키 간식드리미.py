@@ -1,5 +1,6 @@
 from sys import stdin
 from collections import deque
+
 input = stdin.readline
 
 n = int(input())
@@ -21,10 +22,9 @@ while a:
             i += 1
         else:
             break
-        
-    
+
+
 if not b:
-    print('Nice')
+    print("Nice")
 else:
-    print('Sad')
-                
+    print("Sad")

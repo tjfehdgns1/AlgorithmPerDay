@@ -19,19 +19,20 @@ skip에 포함되는 알파벳은 s에 포함되지 않습니다.
 s	    skip	index	result
 "aukks"	"wbqd"	5	    "happy"'''
 
+
 def solution(s, skip, index):
-    answer = ''
+    answer = ""
     for i, char in enumerate(s):
         count = 0
         a = list(range(ord(char), ord(char) + index + 1))
         for b in skip:
             if ord(b) in a:
                 count += 1
-        if a[index] + count < ord('{'):
+        if a[index] + count < ord("{"):
             answer += chr(a[index] + count)
         else:
-            answer += 'a'
-    return answer # 테스트 실패
+            answer += "a"
+    return answer  # 테스트 실패
 
 
 s = "aukks"
@@ -40,51 +41,54 @@ index = 5
 
 result = solution(s, skip, index)
 
-#################################################
-def solution(s, skip, index):
-    answer = ''
-    for i, char in enumerate(s):
-        count = 0
-        a = list(range(ord(char), ord(char) + index + 1))
-        for b in skip:
-            if ord(b) in a:
-                count += 1
-        if a[index] + count < ord('{') and a[index] + count >= ord('a') :
-            answer += chr(a[index] + count)
-        elif a[index] + count >= ord('{') :
-            answer += 'a'
-        elif a[index] + count <= ord('a') :
-            answer += 'z'
-    return answer # 테스트 실패
 
 #################################################
 def solution(s, skip, index):
-    answer = ''
+    answer = ""
     for i, char in enumerate(s):
         count = 0
         a = list(range(ord(char), ord(char) + index + 1))
         for b in skip:
             if ord(b) in a:
                 count += 1
-        if a[index] + count < ord('{') and a[index] + count > ord('a') :
+        if a[index] + count < ord("{") and a[index] + count >= ord("a"):
             answer += chr(a[index] + count)
-        elif a[index] + count >= ord('{') :
+        elif a[index] + count >= ord("{"):
+            answer += "a"
+        elif a[index] + count <= ord("a"):
+            answer += "z"
+    return answer  # 테스트 실패
+
+
+#################################################
+def solution(s, skip, index):
+    answer = ""
+    for i, char in enumerate(s):
+        count = 0
+        a = list(range(ord(char), ord(char) + index + 1))
+        for b in skip:
+            if ord(b) in a:
+                count += 1
+        if a[index] + count < ord("{") and a[index] + count > ord("a"):
+            answer += chr(a[index] + count)
+        elif a[index] + count >= ord("{"):
             answer += chr(a[index] + count - 26)
-        elif a[index] + count <= ord('a') :
+        elif a[index] + count <= ord("a"):
             answer += chr(a[index] + count + 26)
-    return answer # 테스트 실패
+    return answer  # 테스트 실패
+
+
 ####################################
 def solution(s, skip, index):
-    chars = 'abcdefghijklmnopqrstuvwxyz'
-    
+    chars = "abcdefghijklmnopqrstuvwxyz"
+
     for i in skip:
         if i in chars:
             chars = chars.replace(i, "")
 
-    return "".join([chars[(chars.index(j)+index) % len(chars)] for j in s])        
+    return "".join([chars[(chars.index(j) + index) % len(chars)] for j in s])
 
 
-
-# ascii 
+# ascii
 
 # a, [b,c,d,e,f] skip=[b,d]

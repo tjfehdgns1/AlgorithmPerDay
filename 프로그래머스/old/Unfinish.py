@@ -15,13 +15,15 @@ participant	                                         completion	                
 ["marina", "josipa", "nikola", "vinko", "filipa"]	["josipa", "filipa", "marina", "nikola"]	"vinko"
 ["mislav", "stanko", "mislav", "ana"]	            ["stanko", "ana", "mislav"]             	"mislav"'''
 
+
 def solution(participant, completion):
     temp = participant.copy()
-    for name in temp :
-        if name in completion :
+    for name in temp:
+        if name in completion:
             participant.remove(name)
             completion.remove(name)
-    return participant[0] # 시간 초과 5분 
+    return participant[0]  # 시간 초과 5분
+
 
 def solution(participant, completion):
     participant_dict = {}
@@ -35,18 +37,22 @@ def solution(participant, completion):
 
     for key, value in participant_dict.items():
         if value > 0:
-            return key # 딕셔너리로 효율성 높임 44.98ms
-        
+            return key  # 딕셔너리로 효율성 높임 44.98ms
+
 
 import collections
 
-def solution(participant, completion):
-    answer = collections.Counter(participant) - collections.Counter(completion)
-    return list(answer.keys())[0] # 74.36ms
-# Counter 끼리 빼기
 
 def solution(participant, completion):
-    answer = ''
+    answer = collections.Counter(participant) - collections.Counter(completion)
+    return list(answer.keys())[0]  # 74.36ms
+
+
+# Counter 끼리 빼기
+
+
+def solution(participant, completion):
+    answer = ""
     temp = 0
     dic = {}
     for part in participant:
@@ -56,5 +62,7 @@ def solution(participant, completion):
         temp -= hash(com)
     answer = dic[temp]
 
-    return answer # 54.12ms 
-#hash() 고유값을 부여
+    return answer  # 54.12ms
+
+
+# hash() 고유값을 부여

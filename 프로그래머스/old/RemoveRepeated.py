@@ -13,22 +13,27 @@ my_string	        result
 "people"	        "peol"
 "We are the world"	"We arthwold"'''
 
+
 def solution(my_string):
-    result = ''
-    
+    result = ""
+
     for char in my_string:
         if char not in result:
             result += char
-            
+
     return result
+
+
 ###
 def solution(my_string):
-    return ''.join(dict.fromkeys(my_string))
-# ex) {'p': none,'e': none,'o': none,'l': none, } 
+    return "".join(dict.fromkeys(my_string))
+
+
+# ex) {'p': none,'e': none,'o': none,'l': none, }
 # 위 방식들은 후에 나오는 중복된 문자들을 제거하는 방식들
 
+
 ###
-#만약 중복된 문자중에서 앞에 있는 문자를 지울려면?
+# 만약 중복된 문자중에서 앞에 있는 문자를 지울려면?
 def remove_transposition(my_string: str) -> str:
     pass
-

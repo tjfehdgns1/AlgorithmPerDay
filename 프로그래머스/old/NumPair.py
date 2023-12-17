@@ -17,36 +17,40 @@ X	    Y	        result
 "12321"	"42531"	    "321"
 "5525"	"1255"	    "552"'''
 
+
 def solution(X, Y):
     intersect = list(set(X) & set(Y))
     pair = []
-    for num in intersect :
+    for num in intersect:
         x_count = X.count(num)
         y_count = Y.count(num)
         pair_count = min(x_count, y_count)
-        for _ in range(pair_count) :
+        for _ in range(pair_count):
             pair.append(str(num))
-    pair.sort(reverse = True)
+    pair.sort(reverse=True)
 
-    if not pair :
-        return '-1'
-    elif len(pair) == pair.count('0') :
-        return '0'
-    else :
+    if not pair:
+        return "-1"
+    elif len(pair) == pair.count("0"):
+        return "0"
+    else:
         return "".join(pair)
+
+
 # 691.79ms 48분
 # 교집합 구하고 겹치는 수 최소값 만큼 pair에 넣어줌
 
+
 def solution(X, Y):
-    answer = ''
+    answer = ""
 
-    for i in range(9,-1,-1) :
-        answer += (str(i) * min(X.count(str(i)), Y.count(str(i))))
+    for i in range(9, -1, -1):
+        answer += str(i) * min(X.count(str(i)), Y.count(str(i)))
 
-    if answer == '' :
-        return '-1'
-    elif len(answer) == answer.count('0'):
-        return '0'
-    else :
-        return answer # 간결한 코드 85.91ms
-    #sort를 쓰지 않기 위해 큰수부터 range
+    if answer == "":
+        return "-1"
+    elif len(answer) == answer.count("0"):
+        return "0"
+    else:
+        return answer  # 간결한 코드 85.91ms
+    # sort를 쓰지 않기 위해 큰수부터 range

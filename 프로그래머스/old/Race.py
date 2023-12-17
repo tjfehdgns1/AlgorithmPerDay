@@ -1,4 +1,4 @@
-'''달리기 경주
+"""달리기 경주
 문제 설명
 얀에서는 매년 달리기 경주가 열립니다. 해설진들은 선수들이 자기 바로 앞의 선수를 추월할 때 추월한 선수의 이름을 부릅니다. 예를 들어 1등부터 3등까지 "mumu", "soe", "poe" 선수들이 순서대로 달리고 있을 때, 해설진이 "soe"선수를 불렀다면 2등인 "soe" 선수가 1등인 "mumu" 선수를 추월했다는 것입니다. 즉 "soe" 선수가 1등, "mumu" 선수가 2등으로 바뀝니다.
 
@@ -15,26 +15,34 @@ callings는 players의 원소들로만 이루어져 있습니다.
 경주 진행중 1등인 선수의 이름은 불리지 않습니다.
 입출력 예
 players	                                callings	                    result
-["mumu", "soe", "poe", "kai", "mine"]	["kai", "kai", "mine", "mine"]	["mumu", "kai", "mine", "soe", "poe"]'''
+["mumu", "soe", "poe", "kai", "mine"]	["kai", "kai", "mine", "mine"]	["mumu", "kai", "mine", "soe", "poe"]"""
+
 
 def solution(players, callings):
-    for call in callings :
-        players[players.index(call) - 1], players[players.index(call)] = players[players.index(call)], players[players.index(call) - 1]
-    return players # 리스트 안에 있는 값이 안바뀜
+    for call in callings:
+        players[players.index(call) - 1], players[players.index(call)] = (
+            players[players.index(call)],
+            players[players.index(call) - 1],
+        )
+    return players  # 리스트 안에 있는 값이 안바뀜
+
+
 ##############################################
 def solution(players, callings):
     for call in callings:
         index = players.index(call)
         if index != 0:
             players[index - 1], players[index] = players[index], players[index - 1]
-    return players # 테스트케이스 시간 초과 
+    return players  # 테스트케이스 시간 초과
+
+
 ###########################################
 def solution(players, callings):
     player_dict = {player: index for index, player in enumerate(players)}
     for call in callings:
         index = player_dict[call]
         if index != 0:
-            players[index-1], players[index] = players[index], players[index-1]
+            players[index - 1], players[index] = players[index], players[index - 1]
             player_dict[players[index]] = index
-            player_dict[players[index-1]] = index - 1
-    return players # 리스트의 인덱스를 하나하나 찾는거 보단 딕셔너리를 쓰는게 효율적
+            player_dict[players[index - 1]] = index - 1
+    return players  # 리스트의 인덱스를 하나하나 찾는거 보단 딕셔너리를 쓰는게 효율적

@@ -1,4 +1,4 @@
-'''신고 결과 받기
+"""신고 결과 받기
 문제 설명
 신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 시스템을 개발하려 합니다. 
 무지가 개발하려는 시스템은 다음과 같습니다.
@@ -53,29 +53,32 @@ return 하는 배열은 id_list에 담긴 id 순서대로 각 유저가 받은 �
 입출력 예
 id_list	                            report	                                                            k	result
 ["muzi", "frodo", "apeach", "neo"]	["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]	2	[2,1,1,0]
-["con", "ryan"]	                    ["ryan con", "ryan con", "ryan con", "ryan con"]	                3	[0,0]'''
+["con", "ryan"]	                    ["ryan con", "ryan con", "ryan con", "ryan con"]	                3	[0,0]"""
+
 
 def solution(id_list, reports, k):
     result = [0] * len(id_list)
     dic = {}
-    
+
     for id in id_list:
-        dic[id] = [0]*len(id_list)
-    
+        dic[id] = [0] * len(id_list)
+
     for report in set(reports):
-        subj, obj = report.split(' ')
+        subj, obj = report.split(" ")
         idx = id_list.index(subj)
         dic[obj][idx] += 1
 
-    for key,value in dic.items():
+    for key, value in dic.items():
         if sum(value) >= k:
-            result = [x+y for x,y in zip(result,value)]
-        
-    return result # 45min, 1638.70ms , O(N^2)
+            result = [x + y for x, y in zip(result, value)]
+
+    return result  # 45min, 1638.70ms , O(N^2)
+
+
 ####################################
 def solution(id_list, report, k):
-    answer = [0] * len(id_list)    
-    reports = {x : 0 for x in id_list}
+    answer = [0] * len(id_list)
+    reports = {x: 0 for x in id_list}
 
     for r in set(report):
         reports[r.split()[1]] += 1
@@ -84,13 +87,15 @@ def solution(id_list, report, k):
         if reports[r.split()[1]] >= k:
             answer[id_list.index(r.split()[0])] += 1
 
-    return answer # 1362.26ms , O(N^2)
+    return answer  # 1362.26ms , O(N^2)
+
+
 #############################
 def solution(id_list, report, k):
     answer = []
     a = list(set(report))
-    dictionary2 = {name : 0 for name in id_list}
-    dictionary = {name : [] for name in id_list}
+    dictionary2 = {name: 0 for name in id_list}
+    dictionary = {name: [] for name in id_list}
     for i in a:
         dictionary[i.split()[1]].append(i.split()[0])
 
@@ -102,4 +107,4 @@ def solution(id_list, report, k):
     for i in dictionary2:
         answer.append(dictionary2[i])
 
-    return answer # 198.50ms, 
+    return answer  # 198.50ms,
